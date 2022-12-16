@@ -48,9 +48,9 @@ public class DeleteCartsTests
         //Assert
         
         /* Verify correct response status */
-        Assert.AreEqual(responseStatus, 200, "Response status is != 200");
+        Assert.AreEqual(200, responseStatus,  "Response status is != 200");
         /* Verify valid response format */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(CartModel), "Response is not valid");
+        Assert.AreEqual(typeof(CartModel), deserializedResponseData.GetType(), "Response is not valid");
         /* Verify correct operation result */
         Assert.IsTrue(deserializedResponseData.IsDeleted, "Cart did not removed");
         /* Verify cart id is the same */
@@ -79,9 +79,9 @@ public class DeleteCartsTests
         //Assert
         
         /* Verify correct response status */
-        Assert.AreEqual(responseStatus, 200, "Response status is != 200");
+        Assert.AreEqual(200, responseStatus, "Response status is != 200");
         /* Verify valid response format */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(CartModel), "Response is not valid");
+        Assert.AreEqual(typeof(CartModel),deserializedResponseData.GetType(),  "Response is not valid");
         /* Verify correct operation result */
         Assert.IsTrue(deserializedResponseData.IsDeleted, "Cart did not removed");
         /* Verify cart id is the same */
@@ -112,9 +112,9 @@ public class DeleteCartsTests
         //Assert
         
         /* Verify correct response status */
-        Assert.AreEqual(responseStatus, 404, "Response status is != 404");
+        Assert.AreEqual(404, responseStatus, "Response status is != 404");
         /* Verify valid response format */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema), deserializedResponseData.GetType(), 
             "Response is not valid");
         /* Verify valid response format */
         Assert.IsTrue((deserializedResponseData.Message.Length > 0), "Response contain error message");
@@ -143,9 +143,9 @@ public class DeleteCartsTests
 
         //Assert
         /* Verify correct response status */
-        Assert.AreEqual(responseStatus, 400, "Response status is != 400");
+        Assert.AreEqual(400,responseStatus,  "Response status is != 400");
         /* Verify valid response format */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema),deserializedResponseData.GetType(),
             "Response is not valid");
         /* Verify valid response format */
         Assert.IsTrue((deserializedResponseData.Message.Length > 0), "Response contain error message");
@@ -169,9 +169,9 @@ public class DeleteCartsTests
         
         //Assert
         /* Verify correct response status */
-        Assert.AreEqual(responseStatus, 400, "Response status is != 400");
+        Assert.AreEqual(400,responseStatus,  "Response status is != 400");
         /* Verify valid response format */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema), deserializedResponseData.GetType(), 
             "Response is not valid");
         /* Verify valid response format */
         Assert.IsTrue((deserializedResponseData.Message.Length > 0), "Response contain error message");

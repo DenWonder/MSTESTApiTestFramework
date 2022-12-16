@@ -51,22 +51,22 @@ public class ApiHelper
 
     public async Task<IAPIResponse> Make_Authenticated_Get_Request(string url)
     {
-        return await Make_Get_Request(url, await _authHelper.GetAuthenticatedUserHeaders());
+        return await Make_Get_Request(url, _authHelper.GetAuthenticatedUserHeaders());
     }
 
     public async Task<IAPIResponse> Make_Authenticated_Post_Request(string url, JsonObject? requestBodyData = null)
     {
-        return await Make_Post_Request(url, requestBodyData, await _authHelper.GetAuthenticatedUserHeaders());
+        return await Make_Post_Request(url, requestBodyData, _authHelper.GetAuthenticatedUserHeaders());
     }
     
     public async Task<IAPIResponse> Make_Authenticated_Put_Request(string url, JsonObject? requestBodyData = null)
     {
-        return await Make_Put_Request(url, requestBodyData, await _authHelper.GetAuthenticatedUserHeaders());
+        return await Make_Put_Request(url, requestBodyData, _authHelper.GetAuthenticatedUserHeaders());
     }
     
     public async Task<IAPIResponse> Make_Authenticated_Delete_Request(string url, JsonObject? requestBodyData = null)
     {
-        return await Make_Delete_Request(url, requestBodyData, await _authHelper.GetAuthenticatedUserHeaders());
+        return await Make_Delete_Request(url, requestBodyData, _authHelper.GetAuthenticatedUserHeaders());
     }
 
     public async Task<IAPIResponse> Make_Post_Request(

@@ -50,9 +50,9 @@ public class GetCartsTests
         //Assert
         
         /* Verify response status is correct */
-        Assert.IsTrue(responseStatus == 200, "Response status != 200");
+        Assert.AreEqual(200,responseStatus,  "Response status != 200");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseGetAllSchema));
+        Assert.AreEqual(typeof(ResponseGetAllSchema), deserializedResponseData.GetType());
         /* Verify response is correct */
         Assert.IsTrue(deserializedResponseData.Total == cartsCount);
     }
@@ -79,9 +79,9 @@ public class GetCartsTests
         //Assert
         
         /* Verify response status is correct */
-        Assert.IsTrue(responseStatus == 200, "Response status != 200");
+        Assert.AreEqual(200, responseStatus, "Response status != 200");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseGetAllSchema));
+        Assert.AreEqual(typeof(ResponseGetAllSchema), deserializedResponseData.GetType());
         /* Verify response is correct */
         Assert.IsTrue(deserializedResponseData.Total == cartsCount);
     }
@@ -111,9 +111,9 @@ public class GetCartsTests
         //Assert
         
         /* Verify response status is correct */
-        Assert.IsTrue(responseStatus == 200, "Response status != 200");
+        Assert.AreEqual(200,responseStatus,  "Response status != 200");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseGetAllSchema));
+        Assert.AreEqual(typeof(ResponseGetAllSchema), deserializedResponseData.GetType());
         /* Verify response is correct */
         Assert.IsTrue(deserializedResponseData.Carts.Length <= (int)limitParameterValue);
     }
@@ -139,9 +139,9 @@ public class GetCartsTests
         //Assert
         
         /* Verify response status is correct */
-        Assert.IsTrue(responseStatus == 400, "Response status != 400");
+        Assert.AreEqual(400, responseStatus, "Response status != 400");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema),deserializedResponseData.GetType());
     }
     
     /**
@@ -165,9 +165,9 @@ public class GetCartsTests
         //Assert
         
         /* Verify response status is correct */
-        Assert.IsTrue(responseStatus == 500, "Response status != 500");
+        Assert.AreEqual(500, responseStatus, "Response status != 500");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema), deserializedResponseData.GetType());
     }
 
     /*
@@ -194,9 +194,9 @@ public class GetCartsTests
         
         //Assert
         /* Verify response status is correct */
-        Assert.IsTrue(responseStatus == 200, "Response status != 200");
+        Assert.AreEqual(200, responseStatus, "Response status != 200");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseGetAllSchema));
+        Assert.AreEqual(typeof(ResponseGetAllSchema), deserializedResponseData.GetType() );
     }
     
     /**
@@ -218,9 +218,9 @@ public class GetCartsTests
         
         //Assert
         /* Verify response status is correct */
-        Assert.IsTrue(responseStatus == 200, "Response status != 200");
+        Assert.AreEqual(200, responseStatus, "Response status != 200");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseGetAllSchema));
+        Assert.AreEqual(typeof(ResponseGetAllSchema), deserializedResponseData.GetType());
     }
     
     /**
@@ -242,9 +242,9 @@ public class GetCartsTests
         
         //Assert
         /* Verify response status is correct */
-        Assert.IsTrue(responseStatus == 200, "Response status != 200");
+        Assert.AreEqual(200, responseStatus, "Response status != 200");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseGetAllSchema));
+        Assert.AreEqual(typeof(ResponseGetAllSchema), deserializedResponseData.GetType());
     }
 
     /**
@@ -268,9 +268,9 @@ public class GetCartsTests
 
         //Assert
         /* Verify response status is correct */
-        Assert.IsTrue(responseStatus == 400, "Response status != 400");
+        Assert.AreEqual(400, responseStatus, "Response status != 400");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema), deserializedResponseData.GetType());
         /* Verify response is correct */
         Assert.IsTrue(deserializedResponseData.Message.Length > 0);
     }
@@ -296,9 +296,9 @@ public class GetCartsTests
 
         //Assert
         /* Verify response status is correct */
-        Assert.IsTrue(responseStatus == 404, "Response status != 404");
+        Assert.AreEqual(404, responseStatus, "Response status != 404");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema), deserializedResponseData.GetType());
         /* Verify response is correct */
         Assert.IsTrue(deserializedResponseData.Message.Length > 0);
     }

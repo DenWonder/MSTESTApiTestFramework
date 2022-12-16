@@ -46,3 +46,8 @@ git clone https://github.com/DenWonder/MSTESTApiTestFramework.git
  - Helpers/CartsHelper.cs - use for generate request body parameters for carts endpoint;
  - Helpers/DeserializeHelper.cs - all deserializers, use for transformation response data to useful Objects;
  - Models/ - list of useful models (local representation of api models, like a dto);
+
+## Future ToDo's:
+
+1) Implement model's methods for Generate (may be with fabric pattern), Verificate;
+2) Implement testing report generate feature;

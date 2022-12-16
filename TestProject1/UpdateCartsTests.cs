@@ -64,9 +64,9 @@ public class UpdateCartsTests
 
         //Assert
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 200, "Response status code is incorrect != 200");
+        Assert.AreEqual(200,responseStatus,  "Response status code is incorrect != 200");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(CartModel));
+        Assert.AreEqual(typeof(CartModel),deserializedResponseData.GetType());
         /* Verify response is correct */
         Assert.IsTrue(deserializedResponseData.TotalQuantity != deserializedOldResponseData.TotalQuantity, 
             "Merge option doesnt work correctly");
@@ -97,7 +97,7 @@ public class UpdateCartsTests
         //Assert
         
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 200, "Response status code is incorrect != 200");
+        Assert.AreEqual(200,responseStatus,  "Response status code is incorrect != 200");
         /* Verify response calculations is correct */
         Assert.IsTrue(_cartsHelper.IsCartCalculationCorrect(deserializedResponseData), 
             "Carts calculation doesnt work correctly");
@@ -151,12 +151,12 @@ public class UpdateCartsTests
         var requestTimer = new Stopwatch();
 
         //Act
-        var getCartDataBeforeUpdateResponse = await _apiHelper.Make_Authenticated_Get_Request($"{Variables.CartsUrl}/{cartId}");
+        var getCartDataBeforeUpdateResponse = await _apiHelper.Make_Get_Request($"{Variables.CartsUrl}/{cartId}");
         var oldResponseData = await getCartDataBeforeUpdateResponse.JsonAsync();
         var deserializedOldResponseData = _deserializeHelper.CartModelDeserializer(oldResponseData);
         
         requestTimer.Start();
-        var getCartDataAfterUpdate = await _apiHelper.Make_Authenticated_Put_Request($"{Variables.CartsUrl}/{cartId}", requestData);
+        var getCartDataAfterUpdate = await _apiHelper.Make_Put_Request($"{Variables.CartsUrl}/{cartId}", requestData);
         requestTimer.Stop();
         
         var responseData = await getCartDataAfterUpdate.JsonAsync();
@@ -165,9 +165,9 @@ public class UpdateCartsTests
         
         //Assert
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 200, "Response status code is incorrect != 200");
+        Assert.AreEqual(200,responseStatus,  "Response status code is incorrect != 200");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(CartModel));
+        Assert.AreEqual(typeof(CartModel), deserializedResponseData.GetType());
         /* Verify response is correct */
         Assert.IsTrue(deserializedResponseData.TotalQuantity != deserializedOldResponseData.TotalQuantity, 
             "Merge option doesnt work correctly");
@@ -204,9 +204,9 @@ public class UpdateCartsTests
         
         //Assert
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 200, "Response status code is incorrect != 200");
+        Assert.AreEqual(200,responseStatus,  "Response status code is incorrect != 200");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(CartModel));
+        Assert.AreEqual(typeof(CartModel),deserializedResponseData.GetType());
         /* Verify response is correct */
         Assert.IsTrue(deserializedResponseData.TotalProducts <= countOfProducts, 
             "Merge option doesnt work correctly");
@@ -239,9 +239,9 @@ public class UpdateCartsTests
         //Assert
         
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 200, "Response status code is incorrect != 200");
+        Assert.AreEqual(200,responseStatus,  "Response status code is incorrect != 200");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(CartModel));
+        Assert.AreEqual(typeof(CartModel), deserializedResponseData.GetType());
         /* Verify response is correct */
         Assert.IsTrue(deserializedResponseData.TotalProducts <= countOfProducts, 
             "Merge option doesnt work correctly");
@@ -276,9 +276,9 @@ public class UpdateCartsTests
         //Assert
         
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 404, "Response status code is incorrect != 404");
+        Assert.AreEqual(404, responseStatus, "Response status code is incorrect != 404");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema),deserializedResponseData.GetType());
         /* Verify response contain message */
         Assert.IsTrue(!string.IsNullOrEmpty(deserializedResponseData.Message), 
             "Response does not contain erro message text");
@@ -317,9 +317,9 @@ public class UpdateCartsTests
         //Assert
         
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 400, "Response status code is incorrect != 400");
+        Assert.AreEqual(400, responseStatus, "Response status code is incorrect != 400");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema), deserializedResponseData.GetType());
         /* Verify response contain message */
         Assert.IsTrue(!string.IsNullOrEmpty(deserializedResponseData.Message), 
             "Response does not contain erro message text");
@@ -340,7 +340,7 @@ public class UpdateCartsTests
         var requestData = new JsonObject
         {
             [$"{Variables.MergeCarts}"] = false,
-            [$"{Variables.Products}"] = _cartsHelper.Generate_ProductList_With_CustomParameters((1 + _apiHelper.GetMaxExistedProductId()), 1)
+            [$"{Variables.Products}"] = _cartsHelper.Generate_ProductList_With_CustomParameters((_apiHelper.GetMaxExistedProductId()*2), 1)
         };
 
         //Act
@@ -352,9 +352,9 @@ public class UpdateCartsTests
         
         //Assert
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 400, "Response status code is incorrect != 400");
+        Assert.AreEqual(400, responseStatus, "Response status code is incorrect != 400");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema),deserializedResponseData.GetType());
         /* Verify response contain message */
         Assert.IsTrue(!string.IsNullOrEmpty(deserializedResponseData.Message), 
             "Response does not contain erro message text");
@@ -392,9 +392,9 @@ public class UpdateCartsTests
         
         //Assert
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 400, "Response status code is incorrect != 400");
+        Assert.AreEqual(400,responseStatus,  "Response status code is incorrect != 400");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema), deserializedResponseData.GetType());
         /* Verify response contain message */
         Assert.IsTrue(!string.IsNullOrEmpty(deserializedResponseData.Message), 
             "Response does not contain erro message text");
@@ -433,9 +433,9 @@ public class UpdateCartsTests
         //Assert
      
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 400, "Response status code is incorrect != 400");
+        Assert.AreEqual(400, responseStatus, "Response status code is incorrect != 400");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema), deserializedResponseData.GetType());
         /* Verify response contain message */
         Assert.IsTrue(!string.IsNullOrEmpty(deserializedResponseData.Message), 
             "Response does not contain erro message text");
@@ -475,9 +475,9 @@ public class UpdateCartsTests
         //Assert
         
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 429, "Response status code is incorrect != 429");
+        Assert.AreEqual(400,responseStatus,  "Response status code is incorrect != 400");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema), deserializedResponseData.GetType());
         /* Verify response contain message */
         Assert.IsTrue(!string.IsNullOrEmpty(deserializedResponseData.Message), 
             "Response does not contain erro message text");
@@ -516,9 +516,9 @@ public class UpdateCartsTests
         //Assert
        
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 429, "Response status code is incorrect != 429");
+        Assert.AreEqual(400,responseStatus,  "Response status code is incorrect != 400");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema), deserializedResponseData.GetType());
         /* Verify response contain message */
         Assert.IsTrue(!string.IsNullOrEmpty(deserializedResponseData.Message), 
             "Response does not contain erro message text");
@@ -557,9 +557,9 @@ public class UpdateCartsTests
         //Assert
         
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 429, "Response status code is incorrect != 429");
+        Assert.AreEqual(400, responseStatus, "Response status code is incorrect != 400");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema),deserializedResponseData.GetType());
         /* Verify response contain message */
         Assert.IsTrue(!string.IsNullOrEmpty(deserializedResponseData.Message), 
             "Response does not contain erro message text");
@@ -604,12 +604,12 @@ public class UpdateCartsTests
         //Assert
         
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 400, "Response status code is incorrect != 400");
+        Assert.AreEqual(400,responseStatus,  "Response status code is incorrect != 400");
         /* Verify response is valid */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
+        Assert.AreEqual(typeof(ResponseInfoMessageSchema), deserializedResponseData.GetType());
         /* Verify response contain message */
         Assert.IsTrue(!string.IsNullOrEmpty(deserializedResponseData.Message), 
-            "Response does not contain erro message text");
+            "Response does not contain error message text");
         /* Verify response data is acceptable */
         Assert.IsTrue(requestTimer.ElapsedMilliseconds <= Variables.AcceptableServerResponseTime);
     }

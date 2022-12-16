@@ -52,10 +52,10 @@ public class AuthTest
 
         //Assert
         /* Verify the correct of response status */
-        Assert.AreEqual(responseStatus, 200, 
+        Assert.AreEqual(200, responseStatus,
             "Response status != 200");
         /* Verify response is valid User object */
-        Assert.IsTrue(deserializedResponseData.GetType() == typeof(UserModel), 
+        Assert.AreEqual(typeof(UserModel), deserializedResponseData.GetType(),  
             "Response is not valid");
         /* Verify that verification response contains token */
         Assert.IsTrue(deserializedResponseData.Token.Length > 0, 
@@ -98,7 +98,7 @@ public class AuthTest
         
         //Assert
         /* Verify the correct of response status */
-        Assert.AreEqual(responseStatus, 500, 
+        Assert.AreEqual(500, responseStatus, 
             "Response status != 500");
         /* Verify response is valid User object */
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 
@@ -131,7 +131,7 @@ public class AuthTest
         var deserializedResponseData = _deserializeHelper.ResponseInfoMessageDeserializer(responseData);
         
         //Assert
-        Assert.IsTrue(responseStatus == 400);
+        Assert.AreEqual(400, responseStatus);
         Assert.IsTrue(deserializedResponseData.Message.Contains("Invalid credentials"));
     }
 
@@ -157,7 +157,7 @@ public class AuthTest
         var deserializedResponseData = _deserializeHelper.ResponseInfoMessageDeserializer(responseData);
         
         //Assert
-        Assert.IsTrue(responseStatus == 400);
+        Assert.AreEqual(400, responseStatus);
         Assert.IsTrue(deserializedResponseData.Message is { Length: > 0 });
     }
 
@@ -186,7 +186,7 @@ public class AuthTest
         var deserializedResponseData = _deserializeHelper.ResponseInfoMessageDeserializer(responseData);
         
         //Assert
-        Assert.IsTrue(responseStatus == 400);
+        Assert.AreEqual(400, responseStatus);
         Assert.IsTrue(deserializedResponseData.Message is { Length: > 0 });
     }
     
@@ -201,8 +201,8 @@ public class AuthTest
         //Arrange
         var requestData = new JsonObject
         {
-            ["username"] = _realUser.Username,
-            ["password"] = _realUser.Password
+            [$"{Variables.Username}"] = _realUser.Username,
+            [$"{Variables.Password}"] = _realUser.Password
         };
       
         //Act
@@ -213,7 +213,7 @@ public class AuthTest
         
         //Assert
         /* Verify the correct of response status */
-        Assert.AreEqual(responseStatus, 403, 
+        Assert.AreEqual(403, responseStatus, 
             "Response status != 403");
         /* Verify response is valid User object */
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 

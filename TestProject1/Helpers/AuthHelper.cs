@@ -64,10 +64,9 @@ public class AuthHelper
         return _realUser;
     }
     
-    public async Task<Dictionary<string, string>> GetAuthenticatedUserHeaders()
+    public Dictionary<string, string> GetAuthenticatedUserHeaders()
     {
-        UserModel user = GetExistedUser();
-        var token = await LoginRequest(user.Username, user.Password);
+        var token = _realUser.Token;
         return GetRequestHeadersWithToken(token);
     }
 

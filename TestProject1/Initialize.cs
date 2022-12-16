@@ -8,6 +8,7 @@ public class Initialize
 {
 
     private static readonly ApiHelper _apiHelper = new();
+    public static readonly AuthHelper _authHelper = new();
     private static readonly DeserializeHelper _deserializeHelper = new();
     
     public static int CountOfUsers;
@@ -100,7 +101,11 @@ public class Initialize
         var requestResult = await response.JsonAsync();
         var userData = _deserializeHelper.UserModelDeserializer(requestResult);
         RealUser = (UserModel)userData;
+
+        var token = await _authHelper.LoginRequest(RealUser.Username, RealUser.Password);
+        RealUser.Token = token;
         Console.WriteLine($"All authenticated request will be send as  {RealUser.Username}");
+        Console.WriteLine($"All authenticated request will be send as  {RealUser}");
     }
     
     

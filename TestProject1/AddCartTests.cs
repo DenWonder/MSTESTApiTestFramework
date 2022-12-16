@@ -57,7 +57,7 @@ public class AddCartTests
         
         //Assert
         /* Verify the correct of response status */
-        Assert.AreEqual(responseStatus, 200, "Response status != 200");
+        Assert.AreEqual(200, responseStatus, "Response status != 200");
         /* Verify response is valid cart object */
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(CartModel), "Response is not valid");
         /* Verify response is correct */
@@ -88,7 +88,7 @@ public class AddCartTests
 
         //Assert
         /* Verify response status is 200 (ok) */
-        Assert.AreEqual(responseStatus, 200, "Response status != 200");
+        Assert.AreEqual(200, responseStatus, "Response status != 200");
         /* Verify response is valid cart object */
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(CartModel), "Response is not valid");
 
@@ -117,7 +117,7 @@ public class AddCartTests
 
         //Assert
         /* Verify response status is 200 (ok) */
-        Assert.AreEqual(responseStatus, 200, "Response status != 200");
+        Assert.AreEqual(200, responseStatus,  "Response status != 200");
         /* Verify response is valid cart object */
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(CartModel), "Response is not valid");
         /* Verify is cart updated for the right user */
@@ -154,7 +154,7 @@ public class AddCartTests
 
         //Assert
         /* Verify response status is 200 (ok) */
-        Assert.AreEqual(responseStatus, 200, "Response status != 200");
+        Assert.AreEqual(200, responseStatus, "Response status != 200");
         /* Verify response is valid cart object */
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(CartModel), "Response is not valid");
         /* Verify response is correct */
@@ -188,7 +188,7 @@ public class AddCartTests
         var deserializedResponseData = _deserializeHelper.ResponseInfoMessageDeserializer(responseData);
         
         //Assert
-        Assert.IsTrue(responseStatus == 404, 
+        Assert.AreEqual(404, responseStatus,  
             "Response code should be equal to 404, cause user from request doesnt exist");
         Assert.IsTrue(deserializedResponseData.Message.Length > 0, 
             "Response does not contain error message");
@@ -229,7 +229,7 @@ public class AddCartTests
         var deserializedResponseData = _deserializeHelper.ResponseInfoMessageDeserializer(responseData);
         
         //Assert
-        Assert.AreEqual(responseStatus, 400, "Response status should be equal to 400");
+        Assert.AreEqual(400, responseStatus,  "Response status should be equal to 400");
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 
             "Response is not valid");
         Assert.IsTrue(deserializedResponseData.Message.Length > 0, 
@@ -259,7 +259,7 @@ public class AddCartTests
         var deserializedResponseData = _deserializeHelper.ResponseInfoMessageDeserializer(responseData);
     
         //Assert
-        Assert.IsTrue(responseStatus == 400, "Response status should be equal to 400");
+        Assert.AreEqual(400, responseStatus, "Response status should be equal to 400");
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 
             "Response is not valid");
         Assert.IsTrue(deserializedResponseData.Message.Length > 0, 
@@ -269,7 +269,7 @@ public class AddCartTests
     /**
      * Given: Prepared data: Authenticated user, InValid data for request with not existed Product ID Value;
      * When: Authenticated user send request with prepared data;
-     * Then: Response is Error message; Response code 400 or 404;
+     * Then: Response is Error message; Response code 400;
      */
     [DataTestMethod]
     [DataRow(0)]
@@ -291,7 +291,7 @@ public class AddCartTests
         var deserializedResponseData = _deserializeHelper.ResponseInfoMessageDeserializer(responseData);
         
         //Assert
-        Assert.AreEqual(responseStatus, 400, "responseStatus is not 400");
+        Assert.AreEqual(400,responseStatus,  "responseStatus is not 400");
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 
             "Response is not valid");
         Assert.IsTrue(deserializedResponseData.Message.Length > 0, 
@@ -326,7 +326,7 @@ public class AddCartTests
         var deserializedResponseData = _deserializeHelper.ResponseInfoMessageDeserializer(responseData);
 
         //Assert
-        Assert.AreEqual(responseStatus, 500, "responseStatus is not 500");
+        Assert.AreEqual(500, responseStatus, "responseStatus is not 500");
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 
             "Response is not valid");
         Assert.IsTrue(deserializedResponseData.Message.Length > 0, 
@@ -359,7 +359,7 @@ public class AddCartTests
         var deserializedResponseData = _deserializeHelper.ResponseInfoMessageDeserializer(responseData);
 
         //Assert
-        Assert.AreEqual(responseStatus, 400, "responseStatus is not 400");
+        Assert.AreEqual(400, responseStatus, "responseStatus is not 400");
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 
             "Response is not valid");
         Assert.IsTrue(deserializedResponseData.Message.Length > 0, 
@@ -396,7 +396,7 @@ public class AddCartTests
         var deserializedResponseData = _deserializeHelper.ResponseInfoMessageDeserializer(responseData);
 
         //Assert
-        Assert.AreEqual(responseStatus,  400, "responseStatus is not 400");
+        Assert.AreEqual(400, responseStatus,   "responseStatus is not 400");
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 
             "Response is not valid");
         Assert.IsTrue(deserializedResponseData.Message.Length > 0, 
@@ -429,7 +429,7 @@ public class AddCartTests
         var deserializedResponseData = _deserializeHelper.ResponseInfoMessageDeserializer(responseData);
 
         //Assert
-        Assert.AreEqual(responseStatus, 400, "responseStatus is not 400");
+        Assert.AreEqual(400, responseStatus, "responseStatus is not 400");
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 
             "Response is not valid");
         Assert.IsTrue(deserializedResponseData.Message.Length > 0, 
@@ -462,7 +462,7 @@ public class AddCartTests
         var deserializedResponseData = _deserializeHelper.ResponseInfoMessageDeserializer(responseData);
         
         //Assert
-        Assert.IsTrue(responseStatus is 400, "responseStatus is not 400");
+        Assert.AreEqual(400, responseStatus, "responseStatus is not 400");
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 
             "Response is not valid");
         Assert.IsTrue(deserializedResponseData.Message.Length > 0, 
