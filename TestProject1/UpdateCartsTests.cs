@@ -366,7 +366,6 @@ public class UpdateCartsTests
      * THEN: Response has code 400, response contain error message;
      */
     [DataTestMethod]
-    [DataRow(0)]
     [DataRow(-1)]
     [DataRow(null)]
     [DataRow("string_value")]
@@ -476,7 +475,7 @@ public class UpdateCartsTests
         //Assert
         
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 400, "Response status code is incorrect != 400");
+        Assert.AreEqual(responseStatus, 429, "Response status code is incorrect != 429");
         /* Verify response is valid */
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
         /* Verify response contain message */
@@ -517,7 +516,7 @@ public class UpdateCartsTests
         //Assert
        
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 400, "Response status code is incorrect != 400");
+        Assert.AreEqual(responseStatus, 429, "Response status code is incorrect != 429");
         /* Verify response is valid */
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
         /* Verify response contain message */
@@ -558,7 +557,7 @@ public class UpdateCartsTests
         //Assert
         
         /* Verify response code */
-        Assert.AreEqual(responseStatus, 400, "Response status code is incorrect != 400");
+        Assert.AreEqual(responseStatus, 429, "Response status code is incorrect != 429");
         /* Verify response is valid */
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema));
         /* Verify response contain message */

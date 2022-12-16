@@ -239,9 +239,8 @@ public class GetCartsTests
         var responseData = await response.JsonAsync();
         var deserializedResponseData = _deserializeHelper.GetAllDeserializer(responseData);
 
+        
         //Assert
-        Console.WriteLine(responseData.ToString());
-        Console.WriteLine(responseStatus);
         /* Verify response status is correct */
         Assert.IsTrue(responseStatus == 200, "Response status != 200");
         /* Verify response is valid */

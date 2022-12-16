@@ -1,14 +1,12 @@
-﻿using TestProject1.Driver;
-using TestProject1.Helpers;
+﻿using TestProject1.Helpers;
 using TestProject1.Models;
 
 namespace TestProject1;
 
 [TestClass]
 public class Initialize
-{    
-    // TODO: make style of naming the same for all cases
-   
+{
+
     private static readonly ApiHelper _apiHelper = new();
     private static readonly DeserializeHelper _deserializeHelper = new();
     
@@ -98,14 +96,9 @@ public class Initialize
         var getUsersResponseData = _deserializeHelper.GetAllDeserializer(getUsersCountRequestResult);
         int existedUserId = getUsersResponseData.Users.Select(x => x.Id).ToArray()[numberOfRealUser - 1];
         
-        Console.WriteLine($"I LL USE {existedUserId} USER!");
-        
         var response = await _apiHelper.Make_Get_Request($"{Variables.UsersUrl}/{existedUserId}")!;
-
         var requestResult = await response.JsonAsync();
-
         var userData = _deserializeHelper.UserModelDeserializer(requestResult);
-
         RealUser = (UserModel)userData;
         Console.WriteLine($"All authenticated request will be send as  {RealUser.Username}");
     }

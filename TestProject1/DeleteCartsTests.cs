@@ -119,16 +119,15 @@ public class DeleteCartsTests
         /* Verify valid response format */
         Assert.IsTrue((deserializedResponseData.Message.Length > 0), "Response contain error message");
         /* Verify response time is acceptable */
-        Assert.IsTrue(requestTimer.ElapsedMilliseconds == Variables.AcceptableServerResponseTime);
+        Assert.IsTrue(requestTimer.ElapsedMilliseconds <= Variables.AcceptableServerResponseTime);
     }
 
     /**
      * GIVEN: Authenticated user, InValid  cart ID;
      * WHEN: User send DELETE request with prepared data;
-     * THEN: Response has status 400, response contain error message;
+     * THEN: Response has status 500, response contain error message;
      */
     [DataTestMethod]
-    [DataRow(0)] // ID with value 0 is unsafety
     [DataRow(-1)] // ID with negative integer value is invalid
     [DataRow("string_value")] // string id is not provided according to the documentation
     [DataRow(null)] // null id is invalid

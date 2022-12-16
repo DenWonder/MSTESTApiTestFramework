@@ -71,7 +71,7 @@ public class AuthTest
     /**
      * GIVEN: Valid & Correct credentials data, invalid or incorrect expiresIn data value;
      * WHEN: Not Authenticated user send post auth request with prepared data; 
-     * THEN: User still unauthenticated, response contain error message, response code 400
+     * THEN: User still unauthenticated, response contain error message, response code 500
      */
     [DataTestMethod]
     [DataRow(0)] // 0 minutes TTL for token should return error;
@@ -98,8 +98,8 @@ public class AuthTest
         
         //Assert
         /* Verify the correct of response status */
-        Assert.AreEqual(responseStatus, 400, 
-            "Response status != 400");
+        Assert.AreEqual(responseStatus, 500, 
+            "Response status != 500");
         /* Verify response is valid User object */
         Assert.IsTrue(deserializedResponseData.GetType() == typeof(ResponseInfoMessageSchema), 
             "Response is not valid");
@@ -206,7 +206,7 @@ public class AuthTest
         };
       
         //Act
-        var response = await _apiHelper.Make_Post_Request($"{Variables.AuthLoginUrl}", requestData);
+        var response = await _apiHelper.Make_Put_Request($"{Variables.AuthLoginUrl}", requestData);
         var responseStatus = response.Status;
         var responseData = await response.JsonAsync();
         var deserializedResponseData = _deserializeHelper.ResponseInfoMessageDeserializer(responseData);
